@@ -134,18 +134,18 @@
     mensagem.textContent = texto;
   }
 
-  botaoNao.addEventListener("click", () => mostrarSegundaTela());
-  botaoNao.addEventListener("touchstart", () => mostrarSegundaTela());
+  const eventoClique = 'ontouchstart' in window ? 'touchstart' : 'click';
 
-  botaoSim.addEventListener("click", () => {
+  botaoNao.addEventListener(eventoClique, () => mostrarSegundaTela());
+  botaoSim.addEventListener(eventoClique, () => {
     botaoSim.style.display = "none";
     mostrarMensagem("Não, você não tem planos rs 😅");
   });
 
-  botaoSim.addEventListener("touchstart", () => {
-    botaoSim.style.display = "none";
-    mostrarMensagem("Não, você não tem planos rs 😅");
-  });
+  
+
+
+
 
   function mostrarSegundaTela() {
     // Limpa todos os elementos da página
