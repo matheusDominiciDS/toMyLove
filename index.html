@@ -84,6 +84,7 @@
 
     @media screen and (max-width: 767px) {
      #mensagem {
+      margin-left: 100px;
       margin-top: 30px;
       font-size: 20px;
       line-height: 1.4;
@@ -140,7 +141,7 @@
   botaoNao.addEventListener(eventoClique, () => mostrarSegundaTela());
   botaoSim.addEventListener(eventoClique, () => {
     botaoSim.style.display = "none";
-    mostrarMensagem("Não, você não tem planos rs 💖");
+    mostrarMensagem("Não, você não tem planos rs ❤️");
   });
 
   function mostrarSegundaTela() {
@@ -149,7 +150,7 @@
 
     // Cria nova mensagem
     const novaMensagem = document.createElement("h1");
-    novaMensagem.textContent = "Esteja pronta às 20h 💖";
+    novaMensagem.textContent = "Esteja pronta às 20h ❤️";
     body.appendChild(novaMensagem);
 
     // Cria botão para salvar no calendário
