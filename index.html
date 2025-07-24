@@ -82,16 +82,18 @@
       color: rgba(255, 255, 255, 0.6);
     }
 
-    #mensagem {
+    @media screen and (max-width: 767px) {
+     #mensagem {
       margin-top: 30px;
       font-size: 20px;
       line-height: 1.4;
       max-width: 80%;
-      text-align: right;
+      text-align: center;
       display: flex;
-      justify-content: right;
-      align-items: right;
+      justify-content: center;
+      align-items: center;
       flex-direction: column;
+    } 
     }
   </style>
 </head>
