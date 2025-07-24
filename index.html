@@ -22,7 +22,7 @@
 
     body::before {
     content: "";
-    background-image: url('images/heartIcon.png'); /* ajuste o caminho conforme seu repositório */
+    background-image: url('images/heartIcon.png');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 1200px;
@@ -82,18 +82,17 @@
       color: rgba(255, 255, 255, 0.6);
     }
 
-
-
     #mensagem {
       margin-top: 30px;
       font-size: 20px;
       line-height: 1.4;
       max-width: 80%;
-      text-align: center;
-      align-self: center;
+      text-align: right;
+      display: flex;
+      justify-content: right;
+      align-items: right;
+      flex-direction: column;
     }
-
-    
   </style>
 </head>
 <body>
@@ -139,13 +138,8 @@
   botaoNao.addEventListener(eventoClique, () => mostrarSegundaTela());
   botaoSim.addEventListener(eventoClique, () => {
     botaoSim.style.display = "none";
-    mostrarMensagem("Não, você não tem planos rs 😅");
+    mostrarMensagem("Não, você não tem planos rs 💖");
   });
-
-  
-
-
-
 
   function mostrarSegundaTela() {
     // Limpa todos os elementos da página
@@ -173,6 +167,14 @@
     body.appendChild(cronometro);
 
     iniciarContagemRegressiva("2025-07-25T20:00:00");
+    const declaracao = document.createElement("p");
+    declaracao.textContent = "Meu amor, eu tenho muita sorte de por mais um mês estar dividindo a vida com você. Eu te amo demais. Obrigado por todos os momentos que tivemos e pelos que estão por vir 💖";
+    declaracao.style.marginTop = "30px";
+    declaracao.style.fontSize = "20px";
+    declaracao.style.lineHeight = "1.6";
+    declaracao.style.textAlign = "center";
+    declaracao.style.maxWidth = "80%";
+    document.body.appendChild(declaracao);
   }
 
   function iniciarContagemRegressiva(dataAlvoStr) {
