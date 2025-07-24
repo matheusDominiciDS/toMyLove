@@ -20,6 +20,27 @@
       text-align: center;
     }
 
+    body::before {
+    content: "";
+    background-image: url('images/heartIcon.png'); /* ajuste o caminho conforme seu repositório */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1200px;
+    opacity: 0.15;
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+    }
+
+    body * {
+      position: relative;
+      z-index: 0;
+    }
+
+
     h1 {
       font-size: 24px;
       margin-bottom: 30px;
@@ -42,21 +63,68 @@
       background-color: rgba(255, 255, 255, 0.1);
     }
 
+    input[type="text"] {
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 8px;
+    text-align: center;
+    outline: none;
+    width: 80%;
+    max-width: 300px;
+    margin-top: 10px;
+    transition: transform 0.2s, background-color 0.3s;
+    }
+
+    input[type="text"]::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+
+
     #mensagem {
       margin-top: 30px;
       font-size: 20px;
       line-height: 1.4;
       max-width: 80%;
+      text-align: center;
+      align-self: center;
     }
+
+    
   </style>
 </head>
 <body>
-  <h1>Oi amor da minha vida, tem planos para sexta?</h1>
-  <button class="botao" id="sim">Sim</button>
-  <button class="botao" id="nao">Não</button>
-  <div id="mensagem"></div>
+  <div id="login">
+    <h1>Antes de começarmos...</h1>
+    <p>Onde foi nosso primeiro encontro?</p>
+    <input type="text" id="resposta" placeholder="Digite sua resposta..." />
+    <br/><br/>
+    <button class="botao" onclick="validarResposta()">Entrar</button>
+    <p id="erro" style="color: pink;"></p>
+  </div>
 
+  <div id="conteudo" style="display: none;">
+    <h1>Oi amor da minha vida, tem planos para sexta?</h1>
+    <button class="botao" id="sim">Sim</button>
+    <button class="botao" id="nao">Não</button>
+    <div id="mensagem"></div>
+  </div>
   <script>
+  function validarResposta() {
+    const resposta = document.getElementById("resposta").value.toLowerCase();
+    const erro = document.getElementById("erro");
+
+    if (resposta.includes("outback")) {
+      document.getElementById("login").style.display = "none";
+      document.getElementById("conteudo").style.display = "block";
+    } else {
+      erro.textContent = "NÃÃÃÃO... tenta lembrar melhor";
+    }
+  }
+
   const botaoSim = document.getElementById("sim");
   const botaoNao = document.getElementById("nao");
   const mensagem = document.getElementById("mensagem");
@@ -66,16 +134,16 @@
     mensagem.textContent = texto;
   }
 
-  botaoSim.addEventListener("click", () => mostrarSegundaTela());
-  botaoSim.addEventListener("touchstart", () => mostrarSegundaTela());
+  botaoNao.addEventListener("click", () => mostrarSegundaTela());
+  botaoNao.addEventListener("touchstart", () => mostrarSegundaTela());
 
-  botaoNao.addEventListener("click", () => {
-    botaoNao.style.display = "none";
+  botaoSim.addEventListener("click", () => {
+    botaoSim.style.display = "none";
     mostrarMensagem("Não, você não tem planos rs 😅");
   });
 
-  botaoNao.addEventListener("touchstart", () => {
-    botaoNao.style.display = "none";
+  botaoSim.addEventListener("touchstart", () => {
+    botaoSim.style.display = "none";
     mostrarMensagem("Não, você não tem planos rs 😅");
   });
 
@@ -90,11 +158,12 @@
 
     // Cria botão para salvar no calendário
     const linkCalendario = document.createElement("a");
-    linkCalendario.href = "https://www.google.com/calendar/render?action=TEMPLATE&text=Nosso+Encontro&dates=20250725T230000Z/20250726T010000Z&details=Encontro+de+aniversario+de+namoro+💘"; // link genérico Google Calendar
-    linkCalendario.textContent = "💌 Salvar no calendário";
+    linkCalendario.href = "webcal://matheusdominicids.github.io/toMyLove/calendar/convite.ics";
+    linkCalendario.textContent = "💌 Adicionar ao calendário do iPhone";
     linkCalendario.className = "botao";
     linkCalendario.target = "_blank";
     body.appendChild(linkCalendario);
+
 
     // Cria área para o cronômetro
     const cronometro = document.createElement("div");
