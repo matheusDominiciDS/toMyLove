@@ -94,7 +94,31 @@
       justify-content: right;
       align-items: right;
       flex-direction: column;
-    } 
+      } 
+    }
+
+    .carrossel-container {
+      position: relative;
+      max-width: 80%;
+      margin: 30px auto;
+      overflow: hidden;
+    }
+
+    .carrossel-slide {
+      display: none;
+      position: absolute;
+      width: 100%;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .fade {
+      animation-name: fade;
+      animation-duration: 1s;
+    }
+
+    @keyframes fade {
+      from { opacity: 0.4; }
+      to { opacity: 1; }
     }
   </style>
 </head>
@@ -153,14 +177,49 @@
     novaMensagem.textContent = "Esteja pronta às 20h ❤️";
     body.appendChild(novaMensagem);
 
-    // Cria botão para salvar no calendário
-    const linkCalendario = document.createElement("a");
-    linkCalendario.href = "https://matheusdominicids.github.io/toMyLove/calendar/convite.ics";
-    linkCalendario.textContent = "💌 Adicionar ao calendário do iPhone";
-    linkCalendario.className = "botao";
-    linkCalendario.target = "_blank";
-    body.appendChild(linkCalendario);
+    // Botão para mostrar o carrossel
+    const botaoCarrossel = document.createElement("button");
+    botaoCarrossel.className = "botao";
+    botaoCarrossel.textContent = "Obrigado pelos 5 meses ❤️";
+    body.appendChild(botaoCarrossel);
 
+    // Vídeo a ser exibido após o clique
+    const videoUrl = "images/videoHJ.mp4";
+
+    botaoCarrossel.addEventListener("click", () => {
+      // Limpa toda a tela e exibe apenas o vídeo
+      body.innerHTML = '';
+      // Mantém o estilo flex e centralização do body após limpar
+      body.style.display = 'flex';
+      body.style.flexDirection = 'column';
+      body.style.alignItems = 'center';
+      body.style.justifyContent = 'center';
+      body.style.height = '100vh';
+      body.style.margin = '0';
+      body.style.padding = '20px';
+      body.style.textAlign = 'center';
+      // Cria e exibe o vídeo
+      const video = document.createElement("video");
+      video.src = videoUrl;
+      video.controls = true;
+      video.autoplay = true;
+      video.style.width = "320px";
+      video.style.height = "300px";
+      video.style.borderRadius = "24px";
+      video.style.boxShadow = "0 4px 24px rgba(0,0,0,0.3)";
+      video.style.objectFit = "cover";
+      body.appendChild(video);
+
+      // Mensagem abaixo do vídeo
+      const mensagem = document.createElement("p");
+      mensagem.textContent = "E sempre será você, eu te amo❤️";
+      mensagem.style.marginTop = "24px";
+      mensagem.style.fontSize = "22px";
+      mensagem.style.color = "#fff";
+      mensagem.style.fontWeight = "bold";
+      mensagem.style.textShadow = "0 2px 8px #001f3f";
+      body.appendChild(mensagem);
+    });
 
     // Cria área para o cronômetro
     const cronometro = document.createElement("div");
@@ -190,7 +249,7 @@
 
       if (restante <= 0) {
         clearInterval(atualizar);
-        elemento.textContent = "É hora do nosso encontro! 💑";
+        elemento.textContent = "É hora do nosso encontro! ❤️";
         return;
       }
 
@@ -201,6 +260,22 @@
       elemento.textContent = `⏳ Faltam ${horas}h ${minutos}min ${segundos}s`;
     }, 1000);
   }
+
+// Carrossel automático
+let carrosselInterval = null;
+let carrosselIndex = 0;
+function iniciarCarrossel(carrosselContainer) {
+  const slides = carrosselContainer
+    ? carrosselContainer.getElementsByClassName("carrossel-slide")
+    : document.getElementsByClassName("carrossel-slide");
+  if (carrosselInterval) clearInterval(carrosselInterval);
+  carrosselIndex = 0;
+  carrosselInterval = setInterval(() => {
+    slides[carrosselIndex].style.display = "none";
+    carrosselIndex = (carrosselIndex + 1) % slides.length;
+    slides[carrosselIndex].style.display = "block";
+  }, 3000);
+}
 </script>
 </body>
 </html>
