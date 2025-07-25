@@ -84,7 +84,7 @@
 
     @media screen and (max-width: 767px) {
      #mensagem {
-      margin-left: 20px;
+      margin-left: 40px;
       margin-top: 30px;
       font-size: 20px;
       line-height: 1.4;
@@ -133,7 +133,7 @@
   </div>
 
   <div id="conteudo" style="display: none;">
-    <h1>Oi amor da minha vida, tem planos para sexta?</h1>
+    <h1>Oi amor da minha vida, tem planos para hoje?</h1>
     <button class="botao" id="sim">Sim</button>
     <button class="botao" id="nao">Não</button>
     <div id="mensagem"></div>
@@ -203,7 +203,7 @@
       video.src = videoUrl;
       video.controls = true;
       video.autoplay = true;
-      video.playsInline = true;
+      video.playsInline = false;
       video.setAttribute('playsinline', '');
       video.setAttribute('webkit-playsinline', '');
       video.style.width = "320px";
