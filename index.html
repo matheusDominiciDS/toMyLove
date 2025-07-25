@@ -180,7 +180,7 @@
     // Botão para mostrar o carrossel
     const botaoCarrossel = document.createElement("button");
     botaoCarrossel.className = "botao";
-    botaoCarrossel.textContent = "Obrigado pelos 5 meses ❤️";
+    botaoCarrossel.textContent = "Obrigado pelos 5 meses";
     body.appendChild(botaoCarrossel);
 
     // Vídeo a ser exibido após o clique
@@ -201,7 +201,13 @@
       // Cria e exibe o vídeo
       const video = document.createElement("video");
       video.src = videoUrl;
-      video.controls = true;
+      video.controls = false;
+      // Exibe controles ao clicar no vídeo
+      video.addEventListener('click', function mostrarControles() {
+        video.controls = true;
+        // Remove o listener após mostrar os controles
+        video.removeEventListener('click', mostrarControles);
+      });
       video.autoplay = true;
       video.playsInline = false;
       video.setAttribute('playsinline', '');
@@ -213,14 +219,15 @@
       video.style.objectFit = "cover";
       body.appendChild(video);
 
-      // Mensagem abaixo do vídeo
-      const mensagem = document.createElement("p");
+      // Mensagem abaixo do vídeo com estilo de botão (não clicável)
+      const mensagem = document.createElement("span");
+      mensagem.className = "botao";
       mensagem.textContent = "E sempre será você, eu te amo❤️";
+      mensagem.style.display = "inline-block";
       mensagem.style.marginTop = "24px";
-      mensagem.style.fontSize = "22px";
-      mensagem.style.color = "#fff";
       mensagem.style.fontWeight = "bold";
-      mensagem.style.textShadow = "0 2px 8px #001f3f";
+      mensagem.style.cursor = "default";
+      mensagem.style.pointerEvents = "none";
       body.appendChild(mensagem);
     });
 
