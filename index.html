@@ -203,6 +203,9 @@
       video.src = videoUrl;
       video.controls = true;
       video.autoplay = true;
+      video.playsInline = true;
+      video.setAttribute('playsinline', '');
+      video.setAttribute('webkit-playsinline', '');
       video.style.width = "320px";
       video.style.height = "300px";
       video.style.borderRadius = "24px";
