@@ -174,13 +174,13 @@
 
     // Cria nova mensagem
     const novaMensagem = document.createElement("h1");
-    novaMensagem.textContent = "Esteja pronta às 20h ❤️";
+    novaMensagem.textContent = "Ótimo!!! Então... Fique pronta às 20h ❤️";
     body.appendChild(novaMensagem);
 
     // Botão para mostrar o carrossel
     const botaoCarrossel = document.createElement("button");
     botaoCarrossel.className = "botao";
-    botaoCarrossel.textContent = "Obrigado pelos 5 meses";
+    botaoCarrossel.textContent = "Feliz 5 meses de namoro";
     body.appendChild(botaoCarrossel);
 
     // Vídeo a ser exibido após o clique
@@ -216,14 +216,25 @@
       // Mensagem abaixo do vídeo com estilo de botão (não clicável)
       const mensagem = document.createElement("span");
       mensagem.className = "botao";
-      mensagem.textContent = "E sempre será você, eu te amo❤️";
+      mensagem.textContent = "E para sempre será você, eu te amo❤️";
       mensagem.style.display = "inline-block";
       mensagem.style.marginTop = "24px";
       mensagem.style.fontWeight = "bold";
       mensagem.style.cursor = "default";
       mensagem.style.pointerEvents = "none";
       body.appendChild(mensagem);
+
+      const declaracao = document.createElement("p");
+      declaracao.textContent = "Meu amor, eu tenho muita sorte de por mais um mês estar dividindo a vida com você. Eu te amo demais. Obrigado por todos os momentos que tivemos e pelos que estão por vir 💖";
+      declaracao.style.marginTop = "30px";
+      declaracao.style.fontSize = "20px";
+      declaracao.style.lineHeight = "1.6";
+      declaracao.style.textAlign = "center";
+      declaracao.style.maxWidth = "80%";
+      document.body.appendChild(declaracao);
     });
+
+    
 
     // Cria área para o cronômetro
     const cronometro = document.createElement("div");
@@ -233,14 +244,6 @@
     body.appendChild(cronometro);
 
     iniciarContagemRegressiva("2025-07-25T20:00:00");
-    const declaracao = document.createElement("p");
-    declaracao.textContent = "Meu amor, eu tenho muita sorte de por mais um mês estar dividindo a vida com você. Eu te amo demais. Obrigado por todos os momentos que tivemos e pelos que estão por vir 💖";
-    declaracao.style.marginTop = "30px";
-    declaracao.style.fontSize = "20px";
-    declaracao.style.lineHeight = "1.6";
-    declaracao.style.textAlign = "center";
-    declaracao.style.maxWidth = "80%";
-    document.body.appendChild(declaracao);
   }
 
   function iniciarContagemRegressiva(dataAlvoStr) {
@@ -264,22 +267,6 @@
       elemento.textContent = `⏳ Faltam ${horas}h ${minutos}min ${segundos}s`;
     }, 1000);
   }
-
-// Carrossel automático
-let carrosselInterval = null;
-let carrosselIndex = 0;
-function iniciarCarrossel(carrosselContainer) {
-  const slides = carrosselContainer
-    ? carrosselContainer.getElementsByClassName("carrossel-slide")
-    : document.getElementsByClassName("carrossel-slide");
-  if (carrosselInterval) clearInterval(carrosselInterval);
-  carrosselIndex = 0;
-  carrosselInterval = setInterval(() => {
-    slides[carrosselIndex].style.display = "none";
-    carrosselIndex = (carrosselIndex + 1) % slides.length;
-    slides[carrosselIndex].style.display = "block";
-  }, 3000);
-}
 </script>
 </body>
 </html>
