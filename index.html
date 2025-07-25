@@ -202,12 +202,6 @@
       const video = document.createElement("video");
       video.src = videoUrl;
       video.controls = false;
-      // Exibe controles ao clicar no vídeo
-      video.addEventListener('click', function mostrarControles() {
-        video.controls = true;
-        // Remove o listener após mostrar os controles
-        video.removeEventListener('click', mostrarControles);
-      });
       video.autoplay = true;
       video.playsInline = false;
       video.setAttribute('playsinline', '');
